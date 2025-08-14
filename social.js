@@ -1,23 +1,22 @@
-// Mapeamento de ícones e links
-const socialLinks = {
-  instagram: "https://www.instagram.com",
-  twitter: "https://twitter.com",
-  dribble: "https://dribbble.com",
-  codepen: "https://codepen.io",
-  linkedin: "https://www.linkedin.com",
-  discord: "https://discord.com",
-  github: "https://github.com",
-  telegram: "https://telegram.org",
-  reddit: "https://www.reddit.com"
-};
+      // Mapeamento de ícones e links
+      const socialLinks = {
+        instagram: "https://www.instagram.com",
+        twitter:   "https://twitter.com",
+        spotify:   "https://open.spotify.com",
+        codepen:   "https://codepen.io",
+        linkedin:  "https://www.linkedin.com",
+        discord:   "https://discord.com",
+        github:    "https://github.com",
+        telegram:  "https://telegram.org",
+        reddit:    "https://www.reddit.com"
+      };
 
-// Adiciona evento de clique para cada ícone
-Object.keys(socialLinks).forEach((social) => {
-  const icon = document.querySelector(`.${social}`);
-  if (icon) {
-    icon.style.cursor = "pointer"; // Mostra que é clicável
-    icon.addEventListener("click", () => {
-      window.open(socialLinks[social], "_blank"); // Abre em nova aba
-    });
-  }
-});
+      // Torna o CARD inteiro clicável e robusto
+      document.querySelectorAll(".card > svg").forEach((svg) => {
+        const cls = Array.from(svg.classList).find(c => socialLinks[c]);
+        const card = svg.closest(".card");
+        if (cls && card) {
+          card.style.cursor = "pointer";
+          card.addEventListener("click", () => window.open(socialLinks[cls], "_blank"));
+        }
+      });
